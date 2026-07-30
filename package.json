@@ -1,17 +1,19 @@
 {
-  "name": "rio-x-md",
-  "version": "2.0.0",
-  "description": "RIO X MD - WhatsApp Multi-Device Bot with QR & Pair Code",
+  "name": "rio-x-md-bot",
+  "version": "1.0.0",
+  "description": "RIO X MD - WhatsApp Multi-Device Bot",
   "main": "index.js",
   "scripts": {
-    "start": "node --max-old-space-size=512 index.js",
-    "dev": "node index.js"
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.6.0",
-    "pino": "^8.17.0",
     "express": "^4.18.2",
     "socket.io": "^4.7.2",
+    "pino": "^8.17.0",
     "dotenv": "^16.3.1"
   }
 }
