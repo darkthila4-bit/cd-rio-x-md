@@ -6,102 +6,44 @@
     <title>RIO X MD - Pair</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{
-            font-family:Arial,sans-serif;
-            background:#0a0a0f;
-            color:#fff;
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:20px;
-        }
-        .container{max-width:450px;width:100%}
-        .logo{
-            text-align:center;
-            font-size:2.5rem;
-            font-weight:800;
-            background:linear-gradient(135deg,#6c5ce7,#a855f7);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            margin-bottom:5px;
-        }
-        .subtitle{text-align:center;color:#a0a0b0;margin-bottom:20px;font-size:.9rem}
-        .card{
-            background:#1a1a2e;
-            border:1px solid rgba(255,255,255,.1);
-            border-radius:20px;
-            padding:25px;
-        }
-        .tabs{display:flex;gap:8px;margin-bottom:20px;background:rgba(255,255,255,.03);padding:5px;border-radius:12px}
-        .tab-btn{
-            flex:1;padding:10px;border:none;background:0 0;color:#a0a0b0;
-            border-radius:10px;cursor:pointer;font-size:.85rem;font-weight:600;
-            display:flex;align-items:center;justify-content:center;gap:5px;transition:.3s;
-        }
-        .tab-btn.active{background:linear-gradient(135deg,#6c5ce7,#a855f7);color:#fff}
-        .tab-content{display:none}
-        .tab-content.active{display:block}
-        .input-group{margin-bottom:15px}
-        .input-group label{display:flex;align-items:center;gap:5px;margin-bottom:8px;color:#a0a0b0;font-size:.85rem}
-        .phone-wrap{display:flex;gap:8px}
-        select,input{
-            padding:12px;background:rgba(255,255,255,.05);
-            border:1px solid rgba(255,255,255,.1);border-radius:10px;
-            color:#fff;font-size:1rem;font-family:inherit;
-        }
-        select{min-width:100px}
+        body{font-family:Arial,sans-serif;background:#0a0a0f;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+        .container{max-width:420px;width:100%}
+        .logo{text-align:center;font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#6c5ce7,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:3px}
+        .sub{text-align:center;color:#a0a0b0;font-size:.85rem;margin-bottom:20px}
+        .card{background:#1a1a2e;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px}
+        .tabs{display:flex;gap:6px;margin-bottom:18px;background:rgba(255,255,255,.03);padding:4px;border-radius:10px}
+        .tab{flex:1;padding:10px;border:none;background:0 0;color:#a0a0b0;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:600;text-align:center}
+        .tab.active{background:linear-gradient(135deg,#6c5ce7,#a855f7);color:#fff}
+        .content{display:none}
+        .content.active{display:block}
+        .inp{margin-bottom:12px}
+        .inp label{display:flex;align-items:center;gap:5px;margin-bottom:6px;color:#a0a0b0;font-size:.8rem}
+        .wrap{display:flex;gap:6px}
+        select,input{padding:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:.95rem;font-family:inherit}
+        select{min-width:95px}
         input{flex:1}
         input:focus,select:focus{outline:0;border-color:#6c5ce7}
-        .btn{
-            width:100%;padding:14px;
-            background:linear-gradient(135deg,#6c5ce7,#a855f7);
-            color:#fff;border:none;border-radius:10px;
-            font-size:.95rem;font-weight:600;cursor:pointer;
-            display:flex;align-items:center;justify-content:center;gap:8px;
-        }
-        .btn:disabled{opacity:.6;cursor:not-allowed}
-        .status{
-            margin-top:15px;padding:12px;background:rgba(255,255,255,.03);
-            border-radius:10px;display:none;align-items:center;gap:10px;font-size:.85rem;color:#a0a0b0;
-        }
+        .btn{width:100%;padding:13px;background:linear-gradient(135deg,#6c5ce7,#a855f7);color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer}
+        .btn:disabled{opacity:.6}
+        .status{margin-top:12px;padding:10px;background:rgba(255,255,255,.03);border-radius:10px;display:none;align-items:center;gap:8px;font-size:.8rem;color:#a0a0b0}
         .status.show{display:flex}
-        .spinner{
-            width:18px;height:18px;border:2px solid rgba(255,255,255,.2);
-            border-top-color:#6c5ce7;border-radius:50%;
-            animation:spin .8s linear infinite;display:inline-block;
-        }
-        @keyframes spin{to{transform:rotate(360deg)}}
-        .code-box{
-            margin-top:15px;padding:20px;background:rgba(108,92,231,.1);
-            border:2px solid #6c5ce7;border-radius:15px;text-align:center;display:none;
-        }
-        .code-box.show{display:block}
-        .code-num{
-            font-size:2.5rem;font-weight:800;letter-spacing:8px;
-            color:#a855f7;font-family:monospace;margin:10px 0;
-        }
-        .code-info{text-align:left;margin-top:10px;padding:12px;background:rgba(0,0,0,.3);border-radius:10px;font-size:.8rem}
-        .code-info ol{margin:8px 0 0 18px}
-        .code-info li{margin-bottom:6px;color:#a0a0b0}
-        .timer{color:#a855f7;font-weight:700}
-        .qr-box{margin-top:15px;text-align:center;display:none}
-        .qr-box.show{display:block}
-        .qr-img{display:inline-block;padding:15px;background:#fff;border-radius:15px}
-        .qr-img canvas,.qr-img img{display:block;width:220px;height:220px}
-        .stats{
-            display:flex;justify-content:space-around;margin-top:15px;
-            padding:12px;background:#1a1a2e;border-radius:12px;border:1px solid rgba(255,255,255,.1);
-        }
-        .stat{text-align:center}
-        .stat-val{font-size:1.3rem;font-weight:700;color:#6c5ce7}
-        .stat-lbl{font-size:.7rem;color:#a0a0b0}
-        .toast{
-            position:fixed;bottom:20px;right:20px;background:#1a1a2e;
-            border:1px solid rgba(255,255,255,.1);padding:12px 20px;
-            border-radius:10px;display:flex;align-items:center;gap:8px;
-            transform:translateX(200%);transition:.3s;z-index:1000;font-size:.9rem;
-        }
+        .spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.2);border-top-color:#6c5ce7;border-radius:50%;animation:s .8s linear infinite;display:inline-block}
+        @keyframes s{to{transform:rotate(360deg)}}
+        .codebox{margin-top:12px;padding:18px;background:rgba(108,92,231,.1);border:2px solid #6c5ce7;border-radius:14px;text-align:center;display:none}
+        .codebox.show{display:block}
+        .codenum{font-size:2.3rem;font-weight:800;letter-spacing:8px;color:#a855f7;font-family:monospace;margin:8px 0}
+        .info{text-align:left;margin-top:10px;padding:10px;background:rgba(0,0,0,.3);border-radius:10px;font-size:.78rem}
+        .info ol{margin:6px 0 0 16px}
+        .info li{margin-bottom:5px;color:#a0a0b0}
+        .qrbox{margin-top:12px;text-align:center;display:none}
+        .qrbox.show{display:block}
+        .qrimg{display:inline-block;padding:12px;background:#fff;border-radius:12px}
+        .qrimg canvas{display:block;width:200px;height:200px}
+        .stats{display:flex;justify-content:space-around;margin-top:12px;padding:10px;background:#1a1a2e;border-radius:10px;border:1px solid rgba(255,255,255,.1)}
+        .st{text-align:center}
+        .stv{font-size:1.2rem;font-weight:700;color:#6c5ce7}
+        .stl{font-size:.7rem;color:#a0a0b0}
+        .toast{position:fixed;bottom:20px;right:20px;background:#1a1a2e;border:1px solid rgba(255,255,255,.1);padding:10px 18px;border-radius:10px;display:flex;align-items:center;gap:6px;transform:translateX(200%);transition:.3s;z-index:1000;font-size:.85rem}
         .toast.show{transform:translateX(0)}
         .toast.ok{border-color:#00b894}
         .toast.err{border-color:#e17055}
@@ -110,86 +52,65 @@
 <body>
     <div class="container">
         <div class="logo">RIO X MD</div>
-        <p class="subtitle">WhatsApp Multi-Device Bot</p>
+        <p class="sub">WhatsApp Multi-Device Bot</p>
         
         <div class="card">
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('pair')">🔑 Pair Code</button>
-                <button class="tab-btn" onclick="switchTab('qr')">📱 QR Code</button>
+                <button class="tab active" onclick="sw('pair')">🔑 Pair Code</button>
+                <button class="tab" onclick="sw('qr')">📱 QR Code</button>
             </div>
 
-            <!-- PAIR TAB -->
-            <div id="pairTab" class="tab-content active">
-                <div class="input-group">
+            <div id="pairTab" class="content active">
+                <div class="inp">
                     <label>📱 WhatsApp Number</label>
-                    <div class="phone-wrap">
-                        <select id="cc">
-                            <option value="94">🇱🇰 +94</option>
-                            <option value="91">🇮🇳 +91</option>
-                            <option value="1">🇺🇸 +1</option>
-                            <option value="44">🇬🇧 +44</option>
-                        </select>
-                        <input type="tel" id="phone" placeholder="7XXXXXXXX" maxlength="10">
+                    <div class="wrap">
+                        <select id="cc"><option value="94">🇱🇰 +94</option><option value="91">🇮🇳 +91</option><option value="1">🇺🇸 +1</option><option value="44">🇬🇧 +44</option></select>
+                        <input id="phone" placeholder="7XXXXXXXX" maxlength="10">
                     </div>
                 </div>
-                <button class="btn" id="pairBtn" onclick="getPairCode()">🔑 Get Pairing Code</button>
-                <div id="pairStatus" class="status"><span class="spinner"></span><span id="pairMsg">Connecting...</span></div>
-                <div id="codeBox" class="code-box">
+                <button class="btn" id="pBtn" onclick="getPair()">🔑 Get Pairing Code</button>
+                <div id="pStat" class="status"><span class="spin"></span><span id="pMsg">Connecting...</span></div>
+                <div id="codeBox" class="codebox">
                     <p style="color:#00b894">✅ Your Code:</p>
-                    <div class="code-num" id="codeText">------</div>
-                    <div class="code-info">
-                        <strong>How to connect:</strong>
-                        <ol>
-                            <li>Open WhatsApp</li>
-                            <li>Settings > Linked Devices</li>
-                            <li>Tap "Link a Device"</li>
-                            <li>Enter code above</li>
-                        </ol>
-                    </div>
-                    <p style="margin-top:8px;font-size:.85rem;color:#a0a0b0">⏱️ <span class="timer" id="timer">05:00</span></p>
+                    <div class="codenum" id="codeTxt">------</div>
+                    <div class="info"><strong>Steps:</strong><ol><li>Open WhatsApp</li><li>Settings > Linked Devices</li><li>Tap "Link a Device"</li><li>Enter code</li></ol></div>
                 </div>
             </div>
 
-            <!-- QR TAB -->
-            <div id="qrTab" class="tab-content">
-                <p style="text-align:center;color:#a0a0b0;margin-bottom:15px">Click to generate QR</p>
-                <button class="btn" id="qrBtn" onclick="getQR()">📱 Generate QR Code</button>
-                <div id="qrStatus" class="status" style="margin-top:15px"><span class="spinner"></span><span>Generating...</span></div>
-                <div id="qrBox" class="qr-box"><div class="qr-img" id="qrImg"></div><p style="margin-top:10px;color:#a0a0b0;font-size:.85rem">Scan with WhatsApp</p></div>
+            <div id="qrTab" class="content">
+                <p style="text-align:center;color:#a0a0b0;margin-bottom:12px;font-size:.85rem">Click to generate QR</p>
+                <button class="btn" id="qBtn" onclick="getQR()">📱 Generate QR</button>
+                <div id="qStat" class="status" style="margin-top:12px"><span class="spin"></span><span>Generating...</span></div>
+                <div id="qrBox" class="qrbox"><div class="qrimg" id="qrImg"></div><p style="margin-top:8px;color:#a0a0b0;font-size:.8rem">Scan with WhatsApp</p></div>
             </div>
         </div>
 
-        <!-- Stats -->
         <div class="stats">
-            <div class="stat"><div class="stat-val" id="users">0</div><div class="stat-lbl">Active</div></div>
-            <div class="stat"><div class="stat-val" id="ram">0</div><div class="stat-lbl">RAM (MB)</div></div>
-            <div class="stat"><div class="stat-val">🟢</div><div class="stat-lbl">Online</div></div>
+            <div class="st"><div class="stv" id="users">0</div><div class="stl">Active</div></div>
+            <div class="st"><div class="stv" id="ram">0</div><div class="stl">RAM MB</div></div>
+            <div class="st"><div class="stv">🟢</div><div class="stl">Online</div></div>
         </div>
     </div>
 
-    <!-- Toast -->
-    <div id="toast" class="toast"><span id="toastIcon">✅</span><span id="toastMsg"></span></div>
+    <div id="toast" class="toast"><span id="tIcon">✅</span><span id="tMsg"></span></div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
-        const socket = io();
-        let pairTimer;
+        const socket = io({ transports: ['websocket', 'polling'] });
 
-        // Tab switch
-        function switchTab(t) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        function sw(t) {
+            document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
             if (t === 'pair') {
-                document.querySelector('.tab-btn:first-child').classList.add('active');
+                document.querySelector('.tab:first-child').classList.add('active');
                 document.getElementById('pairTab').classList.add('active');
             } else {
-                document.querySelector('.tab-btn:last-child').classList.add('active');
+                document.querySelector('.tab:last-child').classList.add('active');
                 document.getElementById('qrTab').classList.add('active');
             }
         }
 
-        // Stats
         async function loadStats() {
             try {
                 const r = await fetch('/api/stats');
@@ -199,121 +120,79 @@
             } catch(e) {}
         }
         loadStats();
-        setInterval(loadStats, 10000);
+        setInterval(loadStats, 8000);
         socket.on('stats', d => {
             document.getElementById('users').textContent = d.active || 0;
             document.getElementById('ram').textContent = d.memory || 0;
         });
 
-        // PAIR CODE
-        function getPairCode() {
-            const cc = document.getElementById('cc').value;
-            const phone = document.getElementById('phone').value.replace(/\D/g, '');
-            
-            if (!phone || phone.length < 9) return toast('Enter valid number!', 'err');
+        function getPair() {
+            const phone = document.getElementById('cc').value + document.getElementById('phone').value.replace(/\D/g, '');
+            if (phone.length < 11) return toast('Enter valid number!', 'err');
 
-            const full = cc + phone;
-            const btn = document.getElementById('pairBtn');
-            const status = document.getElementById('pairStatus');
-            const codeBox = document.getElementById('codeBox');
-
+            const btn = document.getElementById('pBtn');
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Wait...';
-            status.classList.add('show');
-            codeBox.classList.remove('show');
-            document.getElementById('pairMsg').textContent = 'Connecting...';
+            btn.innerHTML = '<span class="spin"></span> Wait...';
+            document.getElementById('pStat').classList.add('show');
+            document.getElementById('codeBox').classList.remove('show');
 
-            socket.emit('pair', { phone: full });
+            socket.emit('pair', phone);
 
-            socket.on('log', msg => {
-                document.getElementById('pairMsg').textContent = msg;
-            });
-
-            socket.on('code', data => {
-                status.classList.remove('show');
-                codeBox.classList.add('show');
-                document.getElementById('codeText').textContent = data.code.match(/.{1,4}/g)?.join(' ') || data.code;
+            socket.on('log', m => document.getElementById('pMsg').textContent = m);
+            socket.on('code', c => {
+                document.getElementById('pStat').classList.remove('show');
+                document.getElementById('codeBox').classList.add('show');
+                document.getElementById('codeTxt').textContent = (c || '').match(/.{1,4}/g)?.join(' ') || c;
                 btn.disabled = false;
                 btn.innerHTML = '🔑 Get Pairing Code';
-                startTimer(300);
                 toast('Code ready!', 'ok');
             });
-
-            socket.on('error', msg => {
-                status.classList.remove('show');
+            socket.on('error', m => {
+                document.getElementById('pStat').classList.remove('show');
                 btn.disabled = false;
                 btn.innerHTML = '🔑 Get Pairing Code';
-                toast(msg, 'err');
+                toast(m, 'err');
             });
         }
 
-        function startTimer(s) {
-            clearInterval(pairTimer);
-            let l = s;
-            pairTimer = setInterval(() => {
-                l--;
-                const m = String(Math.floor(l/60)).padStart(2,'0');
-                const sec = String(l%60).padStart(2,'0');
-                document.getElementById('timer').textContent = `${m}:${sec}`;
-                if (l <= 0) {
-                    clearInterval(pairTimer);
-                    document.getElementById('codeBox').classList.remove('show');
-                    toast('Expired!', 'err');
-                }
-            }, 1000);
-        }
-
-        // QR CODE
         function getQR() {
-            const btn = document.getElementById('qrBtn');
-            const status = document.getElementById('qrStatus');
-            const qrBox = document.getElementById('qrBox');
-
+            const btn = document.getElementById('qBtn');
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Wait...';
-            status.classList.add('show');
-            qrBox.classList.remove('show');
-            document.getElementById('qrImg').innerHTML = '';
+            btn.innerHTML = '<span class="spin"></span> Wait...';
+            document.getElementById('qStat').classList.add('show');
+            document.getElementById('qrBox').classList.remove('show');
 
-            socket.emit('request-qr', {});
+            socket.emit('qrcode');
 
-            socket.on('qr', data => {
-                status.classList.remove('show');
-                qrBox.classList.add('show');
-                
-                const canvas = document.createElement('canvas');
-                QRCode.toCanvas(canvas, data.qr, { width: 220, margin: 1 }, e => {
-                    if (!e) {
-                        document.getElementById('qrImg').innerHTML = '';
-                        document.getElementById('qrImg').appendChild(canvas);
-                    }
+            socket.on('qr', q => {
+                document.getElementById('qStat').classList.remove('show');
+                document.getElementById('qrBox').classList.add('show');
+                const c = document.createElement('canvas');
+                QRCode.toCanvas(c, q, { width: 200 }, e => {
+                    if (!e) { document.getElementById('qrImg').innerHTML = ''; document.getElementById('qrImg').appendChild(c); }
                 });
-                
                 btn.disabled = false;
-                btn.innerHTML = '📱 Generate QR Code';
+                btn.innerHTML = '📱 Generate QR';
                 toast('QR ready!', 'ok');
             });
-
-            socket.on('qr-connected', () => {
-                status.classList.remove('show');
-                qrBox.classList.remove('show');
+            socket.on('done', () => {
+                document.getElementById('qStat').classList.remove('show');
+                document.getElementById('qrBox').classList.remove('show');
                 btn.disabled = false;
-                btn.innerHTML = '📱 Generate QR Code';
+                btn.innerHTML = '📱 Generate QR';
                 toast('Connected!', 'ok');
             });
         }
 
-        // Toast
-        function toast(msg, type) {
-            const t = document.getElementById('toast');
-            document.getElementById('toastMsg').textContent = msg;
-            document.getElementById('toastIcon').textContent = type === 'ok' ? '✅' : '❌';
-            t.className = `toast ${type} show`;
-            clearTimeout(t._t);
-            t._t = setTimeout(() => t.classList.remove('show'), 3000);
+        function toast(m, t) {
+            const el = document.getElementById('toast');
+            document.getElementById('tMsg').textContent = m;
+            document.getElementById('tIcon').textContent = t === 'ok' ? '✅' : '❌';
+            el.className = `toast ${t} show`;
+            clearTimeout(el._t);
+            el._t = setTimeout(() => el.classList.remove('show'), 3000);
         }
 
-        // Phone input
         document.getElementById('phone').addEventListener('input', function(e) {
             this.value = this.value.replace(/\D/g, '').slice(0, 10);
         });
